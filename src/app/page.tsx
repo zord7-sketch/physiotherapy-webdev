@@ -2,22 +2,19 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { 
   Activity, ArrowRight, Calendar, MapPin, PhoneCall, ShieldCheck, 
-  UserCheck, Star, Brain, Bone, Flame, Clock, HeartPulse, CheckCircle2,
-  X, Zap, Target, Sparkles
+  UserCheck, Star, Brain, Bone, Flame, Clock, Zap, Target, Sparkles, X
 } from "lucide-react";
 
-// --- Elite Animation Variants ---
-const SPRING = { type: "spring", stiffness: 100, damping: 20 };
-
-const FADE_UP = {
+// --- Elite Animation Variants (Strictly Typed to Fix Vercel Build) ---
+const FADE_UP: Variants = {
   hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: SPRING },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20 } },
 };
 
-const STAGGER = {
+const STAGGER: Variants = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
@@ -92,7 +89,6 @@ export default function PhysiotherapyLanding() {
         
         {/* --- Hero Section --- */}
         <section className="relative overflow-hidden pt-16 pb-24 lg:pt-28 lg:pb-32 bg-white">
-          {/* Ambient Glows */}
           <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[800px] h-[800px] bg-blue-50 rounded-full blur-[120px] -z-10" />
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -154,7 +150,6 @@ export default function PhysiotherapyLanding() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
                   
-                  {/* Floating Stat Card */}
                   <motion.div 
                     initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.6 }}
                     className="absolute bottom-8 left-8 right-8 bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl p-6 flex items-center justify-between text-white shadow-2xl"
@@ -294,7 +289,6 @@ export default function PhysiotherapyLanding() {
                   whileHover={{ y: -10, scale: 1.02 }}
                   className="bg-white rounded-3xl p-8 border border-slate-100 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-200 relative group"
                 >
-                  {/* Decorative quote mark */}
                   <div className="absolute top-6 right-8 text-6xl text-slate-100 font-serif group-hover:text-blue-50 transition-colors">"</div>
                   
                   <div className="flex gap-1 mb-6 relative z-10">
